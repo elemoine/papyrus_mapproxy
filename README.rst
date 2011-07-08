@@ -1,8 +1,8 @@
 papyrus_mapproxy
 =================
 
-papyrus_mapproxy provides an easy and convenient method for embeding
-MapProxy in Pyramid applications.
+papyrus_mapproxy provides an easy and convenient method for embedding MapProxy
+in Pyramid applications.
 
 The source code of papyrus_mapproxy is straightforward, so if
 papyrus_mapproxy doesn't do what you want, open its source code, get
@@ -20,13 +20,13 @@ application, which is done by adding ``papyrus_mapproxy`` to the
 ``install_requires`` list defined in the Pyramid application's ``setup.py``
 file.
 
-Embed TileCache
+Embed MapProxy
 ---------------
 
-Embeding TileCache in a Pyramid application is easy.
+Embedding MapProxy in a Pyramid application is easy.
 
 Edit the application's ``development.ini`` file and, in the main section
-(``[app:]``), set ``tilecache.cfg`` to the location of the TileCache config
+(``[app:]``), set ``mapproxy.yaml`` to the location of the MapProxy config
 file. Example::
 
     [app:MyApp]
@@ -34,8 +34,9 @@ file. Example::
     ...
     mapproxy.yaml = %(here)s/mapproxy.yaml
 
-In this example the TileCache config file is located at the same location as
-the ``development.ini`` file.
+In this example the MapProxy config file is located at the same location as the
+``development.ini`` file. (As an example you can use this MapProxy config `file
+<https://github.com/elemoine/papyrus_mapproxy/blob/master/mapproxy.yaml>`_.)
 
 Now, edit the application's main file, ``__init__.py``, and register
 papyrus_mapproxy using the ``Configurator.include`` method::
@@ -48,4 +49,4 @@ papyrus_mapproxy using the ``Configurator.include`` method::
         config.include(papyrus_mapproxy)
 
 That's it! The Pyramid application now exposes a MapProxy service at
-``/mapproxy``. `Try the demo service <http://localhost:6543/mapproxy/demo>`_
+``/mapproxy``. Try http://localhost:6543/mapproxy/demo.
